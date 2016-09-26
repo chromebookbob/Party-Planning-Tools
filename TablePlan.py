@@ -1,7 +1,7 @@
 from random import shuffle
+import random
 
-boys = ["Jim", "Will", "James", "Fergus", "Tom-Jewson", "Tom-Middleton", "Horatio", "Bigmac", "Arron"]
-girls= ["Pender", "Charlotte", "Hattie", "Emily", "Sophie", "Izzy", "Imi", "Alice", "Watton"]
+
 def flatten(input):
     new_list = []
     for i in input:
@@ -253,12 +253,51 @@ class Table:
 			self.CheckRules()
 			
 			self.DrawTable()
-			
+		
 	def DrawTable(self):
 		table=self.table
 		for i in range(len(table)):
 			print(table[i])
-table=Table(boys, girls, [],[["Bigmac","Imi", "next"], ["Arron", "Hattie", "next"], ["Arron", "Emily", "next"], ["Bigmac", "Emily", "next"], ["Tom-Jewson", "Pender", "next"]])
+	def NextTo(self, person):
+		table = self.table
+		i = table.index(person)
+		current_pos = i
+		if i - 1 < 0:
+			last_pos = len(table)-1
+				
+		else:
+				last_pos = i-1
+		if i+1 >= len(table)-1:
+			next_pos = 0
+		else:
+			next_pos = i+1
+		return [self.table[last_pos], self.table[current_pos], self.table[next_pos]]
+# Define table as Table( list of boys names, list of girls names, empty list, list of rules with the syntax [boy, girl, rule (which can be "next")])
+
+
+boys = ["Jim Bruges", "Will 'It shows' Gough", "James 'NUT' Gardiner", "Yergus 'Stupid Yerger' O'Keefe", "Tom Jewson", "Tom Middleton", "Horatio 'meme man' Lovering", "Bigmac Macmullen", "Arron 'Weeb' Oliphant"]
+girls= ["Charlotte Pender", "Charlotte Ashley", "Princess Fiona Bennett", "Emily Stainer", "Sophie 'Nietszche' Ashley", "Izzy Mckellar", "Imi Colla", "Alice Walton-Knight", "George 'meme' Watton"]
+rules= [["Bigmac Macmullen","Imi Colla", "next"], ["Arron 'Weeb' Oliphant", "Princess Fiona Bennett", "next"], ["Arron 'Weeb' Oliphant", "Emily Stainer", "next"], ["Bigmac Macmullen", "Emily Stainer", "next"], ["Tom Jewson", "Charlotte Pender", "next"], ["James 'NUT' Gardiner", "Princess Fiona Bennett", "next"], ["Jim Bruges", "Izzy Mckellar", "notnext"]]
+
+
+
+table=Table(boys, girls, [], rules)
 table.AddRules()
 table.TestTable()
-input('Press ENTER to exit')
+print(table.table)
+print(table.NextTo("Watton"))
+
+
+
+for i in range(0, len(table.table)):
+	
+	nextto = table.NextTo(table.table[i])
+	print("Seating Plan organised by a computer\n")
+	print("Welcome, %s. You're sitting next to:\n" % nextto[1])
+	print("%s and %s\n" % (nextto[0], nextto[2]))
+	print(random.choice(["Be nice and make conversation.", "Don't be a meme", "It shows.", "Make a speech", "No Brexit chat", "Blame the computer for who you're sitting next to", "If Jim failed his driving test expect nothing from tonight."]))
+	
+
+
+
+input('Press ENTER to continue')
