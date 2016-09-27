@@ -189,7 +189,7 @@ class Table:
 		for i in range(0, int(len(new_table)/2)):
 			temptable.append([new_table[m], new_table[m+1]])
 			m+=2
-		print(temptable)
+		#print(temptable)
 		shuffle(temptable)
 		new_table = flatten(temptable)
 		
@@ -200,7 +200,7 @@ class Table:
 		while alltrue == False:
 			alltrue = True
 			for n in range(0, len(self.rules)-1):
-				print(self.table)
+				#print(self.table)
 				if self.rules[n][2]=="next":
 					
 					if self.CheckNext(self.rules[n][0], self.rules[n][1])== False: 
@@ -256,6 +256,8 @@ class Table:
 		
 	def DrawTable(self):
 		table=self.table
+		print(table)
+		
 		for i in range(len(table)):
 			print(table[i])
 	def NextTo(self, person):
@@ -277,7 +279,7 @@ class Table:
 
 boys = ["Jim Bruges", "Will 'It shows' Gough", "James 'NUT' Gardiner", "Yergus 'Stupid Yerger' O'Keefe", "Tom Jewson", "Tom Middleton", "Horatio 'meme man' Lovering", "Bigmac Macmullen", "Arron 'Weeb' Oliphant"]
 girls= ["Charlotte Pender", "Charlotte Ashley", "Princess Fiona Bennett", "Emily Stainer", "Sophie 'Nietszche' Ashley", "Izzy Mckellar", "Imi Colla", "Alice Walton-Knight", "George 'meme' Watton"]
-rules= [["Bigmac Macmullen","Imi Colla", "next"], ["Arron 'Weeb' Oliphant", "Princess Fiona Bennett", "next"], ["Arron 'Weeb' Oliphant", "Emily Stainer", "next"], ["Bigmac Macmullen", "Emily Stainer", "next"], ["Tom Jewson", "Charlotte Pender", "next"], ["James 'NUT' Gardiner", "Princess Fiona Bennett", "next"], ["Jim Bruges", "Izzy Mckellar", "notnext"]]
+rules= [["Bigmac Macmullen","Imi Colla", "next"], ["Arron 'Weeb' Oliphant", "Princess Fiona Bennett", "next"], ["Arron 'Weeb' Oliphant", "Emily Stainer", "next"], ["Bigmac Macmullen", "Emily Stainer", "next"], ["Tom Jewson", "Charlotte Pender", "next"], ["Jim Bruges", "George 'meme' Watton", "next"], ["Yergus 'Stupid Yerger' O'Keefe", "Charlotte Pender", "next"], ["James 'NUT' Gardiner", "Princess Fiona Bennett", "next"],["James 'NUT' Gardiner", "Princess Fiona Bennett", "notnext"] ]
 
 
 
