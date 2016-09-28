@@ -38,7 +38,8 @@ class Table:
 		n=0
 		while len(boys) != 0:
 			boy = boys[n]
-			nextboy = boys[n+1] 
+			if len(boys) >1:
+				nextboy = boys[n+1] 
 			nexttolist = self.NextTo(boy)
 			print(nexttolist)
 			if len(nexttolist) == 1:
@@ -100,7 +101,8 @@ class Table:
 				table.append(None)
 				boys.pop(boys.index(boy))
 			n = boys.index(nextboy)
-		print(table)		
+			
+			print(table)		
 		
 		
 	
